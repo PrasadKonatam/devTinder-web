@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import base_url from "../utils/constants";
+import baseUrl from "../utils/constants";
 import { addUser } from "../utils/userSlice";
 
 const Body = () => {
@@ -12,9 +12,10 @@ const Body = () => {
   const dispatch = useDispatch();
   const fetchUser = async () => {
     try {
-      const user = await axios.get(base_url + "/profile/view", {
+      const user = await axios.get(baseUrl + "/profile/view", {
         withCredentials: true,
       });
+      console.log(user);
       dispatch(addUser(user.data));
     } catch (error) {
       if (error.status === 400) {
