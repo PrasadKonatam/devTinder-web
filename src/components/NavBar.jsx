@@ -5,14 +5,18 @@ import baseUrl from "../utils/constants";
 import axios from "axios";
 import { removeUser } from "../utils/userSlice";
 
+import { useNavigate } from "react-router-dom";
+
 const NavBar = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await axios.post(baseUrl + "/logout", {}, { withCredentials: true });
       dispatch(removeUser());
+      navigate("/login");
     } catch (error) {
       console.error("Error logging out", error);
     }
