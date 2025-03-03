@@ -23,7 +23,7 @@ const Login = () => {
       );
 
       dispatch(addUser(result?.data?.data || []));
-      navigate("/");
+      navigate("/feed");
     } catch (error) {
       setError(error?.response?.data);
       console.log(error);
