@@ -26,6 +26,9 @@ const Feed = () => {
     getFeed();
   }, []);
 
+  if (!feed) return;
+  if (feed.length === 0) return <h1>no feed at this time</h1>;
+
   return (
     feed && (
       <div>
